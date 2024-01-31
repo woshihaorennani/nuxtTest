@@ -8,13 +8,13 @@
         <div class="hidden lg:block w-full h-full max-w-inner">
             <div class="w-full h-full flex justify-between items-center" >
                 <!-- <div class="flex items-center"><img class="w-40" src="/img/metlife-china-logo.png"></div> -->
-                <a @click.stop="jump('/')" class="flex items-center"><img class="w-40" src="/img/metlife-china-logo.png"></a>
+                <a href="/" class="flex items-center"><img class="w-40" src="/img/metlife-china-logo.png"></a>
                 <div class="flex items-center h-full text-sm " >
                     <!-- PC端菜单内容 -->
                     <ul class="flex h-full" >
                         <li v-for="item in menuDatas[0].children" @mouseenter="showSubMenu(item.id)" class="cursor-pointer mr-8 h-full" >
                             <div class="flex h-full items-center" v-if="item.menu_config.cur_page_in_menu">
-                                <a @click.stop="jump(item.route_config&&item.route_config.full_link ? item.route_config.full_link : item.route_url)">{{ item.menu_config&&item.menu_config.menu_name  ? item.menu_config.menu_name : item.name  }}</a>
+                                <a :href="item.route_config&&item.route_config.full_link ? item.route_config.full_link : item.route_url">{{ item.menu_config&&item.menu_config.menu_name  ? item.menu_config.menu_name : item.name  }}</a>
 
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4" v-if="activeSubMenu === item.id">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
@@ -50,11 +50,11 @@
                                             <ul class="w-full h-full flex flex-wrap justify-start border-solid border-x border-r-0 border-gray-300 pl-8">
                                                 <li v-for="subItem in item.children" :key="subItem.id" class="min-h-5 pr-4 mb-5 w-1/3" style="border:0px solid red">
                                                     <div v-if="subItem.menu_config.cur_page_in_menu">
-                                                        <a @click.stop="jump(subItem.route_config&&subItem.route_config.full_link ? subItem.route_config.full_link : subItem.route_url)" class="font-medium" >{{ subItem.menu_config&&subItem.menu_config.menu_name ? subItem.menu_config.menu_name : subItem.name }}</a>
+                                                        <a :href="subItem.route_config&&subItem.route_config.full_link ? subItem.route_config.full_link : subItem.route_url" class="font-medium" >{{ subItem.menu_config&&subItem.menu_config.menu_name ? subItem.menu_config.menu_name : subItem.name }}</a>
 
                                                         <ul class="h-full pt-4">
                                                             <li v-for="thirdItem in subItem.children" :key="subItem.id" class="pb-4">
-                                                                <a @click.stop="jump(thirdItem.route_config&&thirdItem.route_config.full_link ? thirdItem.route_config.full_link : thirdItem.route_url)" class="flex flex-nowrap ">{{ thirdItem.name }}</a>
+                                                                <a :href="thirdItem.route_config&&thirdItem.route_config.full_link ? thirdItem.route_config.full_link : thirdItem.route_url" class="flex flex-nowrap ">{{ thirdItem.name }}</a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -70,7 +70,7 @@
                                             <div class="w-full h-full  pt-12 " >
                                                 <ul class="flex flex-col  " >
                                                     <li v-for="subItem in item.children" :key="subItem.id" class="w-full h-10 flex items-center" @mouseenter="hoverThirdMenu(subItem.id)" >
-                                                        <a  @click.stop="jump(subItem.route_config ? subItem.route_config.full_link : subItem.route_url)" class="font-medium w-full h-full" :class="{'sec-left-menu-active':activeThirdMenu === subItem.id}">
+                                                        <a  :href="subItem.route_config ? subItem.route_config.full_link : subItem.route_url" class="font-medium w-full h-full" :class="{'sec-left-menu-active':activeThirdMenu === subItem.id}">
                                                             <div class="h-full flex items-center pl-4 font-medium " :class="{'text-white':activeThirdMenu === subItem.id}"> {{ subItem.menu_config&&subItem.menu_config.menu_name  ? subItem.menu_config.menu_name : subItem.name }}
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                                                     <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
@@ -87,10 +87,10 @@
                                         <div class="w-3/4 flex items-end pt-12" >
                                             <ul class="w-full h-full flex justify-around border-solid border-x border-r-0 border-gray-300 pl-8" >
                                                 <li v-for="thirdItem in activeThirdMenuData.children" class="">
-                                                    <a @click.stop="jump(thirdItem.route_config.full_link || thirdItem.route_url)" class="font-medium ">{{ thirdItem.menu_config ? thirdItem.menu_config.menu_name : thirdItem.name }}</a>
+                                                    <a :href="thirdItem.route_config.full_link || thirdItem.route_url" class="font-medium ">{{ thirdItem.menu_config ? thirdItem.menu_config.menu_name : thirdItem.name }}</a>
                                                     <ul class="h-full pt-4">
                                                         <li v-for="forthItem in thirdItem.children" :key="forthItem.id" >
-                                                            <a @click.stop="jump(forthItem.route_config ? forthItem.route_config.full_link : forthItem.route_url)" class="flex flex-nowrap" style="border:1px solid red">{{ forthItem.name }}</a>
+                                                            <a :href="forthItem.route_config ? forthItem.route_config.full_link : forthItem.route_url" class="flex flex-nowrap" style="border:1px solid red">{{ forthItem.name }}</a>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -109,7 +109,7 @@
                         </li>
                     </ul>
                     <div class="border-l h-4/5 mr-4"></div>
-                    <a class="flex items-center mr-4 " @click.stop="jump('/gsvp')">
+                    <a class="flex items-center mr-4 " href="/gsvp">
                     <!-- <div class="flex items-center mr-4" > -->
                             <svg class="h-4 pr-1" version="1.1" id="Icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                             viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve">
