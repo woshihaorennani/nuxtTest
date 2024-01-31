@@ -1,31 +1,41 @@
-# Nuxt 3 Basic Starter
-Azure Static Web Apps allows you to easily build Nuxt 3 apps in minutes. Use this repo with the Nuxt 3 tutorial to build a new server-rendered site.
+# Nuxt 3 Minimal Starter
 
-Check out the following to learn more:
-1. [nuxt 3 documentation](https://v3.nuxtjs.org)
-2. [server-rendered nuxt 3 app on Azure Static Web Apps documentation](https://learn.microsoft.com/en-us/azure/static-web-apps/deploy-nuxtjs)
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 ## Setup
 
 Make sure to install the dependencies:
 
 ```bash
-# yarn
-yarn install
-
 # npm
 npm install
 
 # pnpm
-pnpm install --shamefully-hoist
+pnpm install
+
+# yarn
+yarn install
+
+# bun
+bun install
 ```
 
 ## Development Server
 
-Start Nuxt.js app in development on http://localhost:3000: 
+Start the development server on `http://localhost:3000`:
 
 ```bash
-npm run dev -- -o 
+# npm
+npm run dev
+
+# pnpm
+pnpm run dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
 ```
 
 ## Production
@@ -33,13 +43,33 @@ npm run dev -- -o
 Build the application for production:
 
 ```bash
+# npm
 npm run build
+
+# pnpm
+pnpm run build
+
+# yarn
+yarn build
+
+# bun
+bun run build
 ```
 
 Locally preview production build:
 
 ```bash
+# npm
 npm run preview
+
+# pnpm
+pnpm run preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
 ```
 
-Checkout the [deployment documentation](https://nuxt.com/docs/getting-started/deployment#deployment) for more information.
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

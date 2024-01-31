@@ -1,16 +1,17 @@
 {
-  "name": "nuxt-3-starter",
-  "version": "1.0.0",
-  "description": "My Nuxt 3 Test",
-  "author": "Nuzhat Minhaz",
+  "name": "nuxt-app",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview"
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "nuxt": "3.0.0-rc.6"
+    "nuxt": "^3.9.3",
+    "vue": "^3.4.14",
+    "vue-router": "^4.2.5"
   }
 }
