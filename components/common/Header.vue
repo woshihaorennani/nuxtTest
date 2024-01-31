@@ -8,13 +8,13 @@
         <div class="hidden lg:block w-full h-full max-w-inner">
             <div class="w-full h-full flex justify-between items-center" >
                 <!-- <div class="flex items-center"><img class="w-40" src="/img/metlife-china-logo.png"></div> -->
-                <NuxtLink to="/" class="flex items-center"><img class="w-40" src="/img/metlife-china-logo.png"></NuxtLink>
+                <a @click.stop="jump('/')" class="flex items-center"><img class="w-40" src="/img/metlife-china-logo.png"></a>
                 <div class="flex items-center h-full text-sm " >
                     <!-- PC端菜单内容 -->
                     <ul class="flex h-full" >
                         <li v-for="item in menuDatas[0].children" @mouseenter="showSubMenu(item.id)" class="cursor-pointer mr-8 h-full" >
                             <div class="flex h-full items-center" v-if="item.menu_config.cur_page_in_menu">
-                                <NuxtLink :to="item.route_config&&item.route_config.full_link ? item.route_config.full_link : item.route_url">{{ item.menu_config&&item.menu_config.menu_name  ? item.menu_config.menu_name : item.name  }}</NuxtLink>
+                                <a @click.stop="jump(item.route_config&&item.route_config.full_link ? item.route_config.full_link : item.route_url)">{{ item.menu_config&&item.menu_config.menu_name  ? item.menu_config.menu_name : item.name  }}</a>
 
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4" v-if="activeSubMenu === item.id">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
@@ -50,11 +50,11 @@
                                             <ul class="w-full h-full flex flex-wrap justify-start border-solid border-x border-r-0 border-gray-300 pl-8">
                                                 <li v-for="subItem in item.children" :key="subItem.id" class="min-h-5 pr-4 mb-5 w-1/3" style="border:0px solid red">
                                                     <div v-if="subItem.menu_config.cur_page_in_menu">
-                                                        <NuxtLink class="font-medium" :to="subItem.route_config&&subItem.route_config.full_link ? subItem.route_config.full_link : subItem.route_url">{{ subItem.menu_config&&subItem.menu_config.menu_name ? subItem.menu_config.menu_name : subItem.name }}</NuxtLink>
+                                                        <a @click.stop="jump(subItem.route_config&&subItem.route_config.full_link ? subItem.route_config.full_link : subItem.route_url)" class="font-medium" >{{ subItem.menu_config&&subItem.menu_config.menu_name ? subItem.menu_config.menu_name : subItem.name }}</a>
 
                                                         <ul class="h-full pt-4">
                                                             <li v-for="thirdItem in subItem.children" :key="subItem.id" class="pb-4">
-                                                                <NuxtLink class="flex flex-nowrap " :to="thirdItem.route_config&&thirdItem.route_config.full_link ? thirdItem.route_config.full_link : thirdItem.route_url">{{ thirdItem.name }}</NuxtLink>
+                                                                <a @click.stop="jump(thirdItem.route_config&&thirdItem.route_config.full_link ? thirdItem.route_config.full_link : thirdItem.route_url)" class="flex flex-nowrap ">{{ thirdItem.name }}</a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -70,13 +70,13 @@
                                             <div class="w-full h-full  pt-12 " >
                                                 <ul class="flex flex-col  " >
                                                     <li v-for="subItem in item.children" :key="subItem.id" class="w-full h-10 flex items-center" @mouseenter="hoverThirdMenu(subItem.id)" >
-                                                        <NuxtLink  class="font-medium w-full h-full" :class="{'sec-left-menu-active':activeThirdMenu === subItem.id}" :to="subItem.route_config ? subItem.route_config.full_link : subItem.route_url">
+                                                        <a  @click.stop="jump(subItem.route_config ? subItem.route_config.full_link : subItem.route_url)" class="font-medium w-full h-full" :class="{'sec-left-menu-active':activeThirdMenu === subItem.id}">
                                                             <div class="h-full flex items-center pl-4 font-medium " :class="{'text-white':activeThirdMenu === subItem.id}"> {{ subItem.menu_config&&subItem.menu_config.menu_name  ? subItem.menu_config.menu_name : subItem.name }}
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                                                     <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                                                                 </svg>
                                                             </div>
-                                                        </NuxtLink>
+                                                        </a>
                                                     </li>
                                                 </ul>
                                                 <div class="h-5"></div>
@@ -87,10 +87,10 @@
                                         <div class="w-3/4 flex items-end pt-12" >
                                             <ul class="w-full h-full flex justify-around border-solid border-x border-r-0 border-gray-300 pl-8" >
                                                 <li v-for="thirdItem in activeThirdMenuData.children" class="">
-                                                    <NuxtLink class="font-medium " :to="thirdItem.route_config.full_link || thirdItem.route_url">{{ thirdItem.menu_config ? thirdItem.menu_config.menu_name : thirdItem.name }}</NuxtLink>
+                                                    <a @click.stop="jump(thirdItem.route_config.full_link || thirdItem.route_url)" class="font-medium ">{{ thirdItem.menu_config ? thirdItem.menu_config.menu_name : thirdItem.name }}</a>
                                                     <ul class="h-full pt-4">
                                                         <li v-for="forthItem in thirdItem.children" :key="forthItem.id" >
-                                                            <NuxtLink class="flex flex-nowrap" style="border:1px solid red" :to="forthItem.route_config ? forthItem.route_config.full_link : forthItem.route_url">{{ forthItem.name }}</NuxtLink>
+                                                            <a @click.stop="jump(forthItem.route_config ? forthItem.route_config.full_link : forthItem.route_url)" class="flex flex-nowrap" style="border:1px solid red">{{ forthItem.name }}</a>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -109,7 +109,7 @@
                         </li>
                     </ul>
                     <div class="border-l h-4/5 mr-4"></div>
-                    <NuxtLink class="flex items-center mr-4 " to="/gsvp">
+                    <a class="flex items-center mr-4 " @click.stop="jump('/gsvp')">
                     <!-- <div class="flex items-center mr-4" > -->
                             <svg class="h-4 pr-1" version="1.1" id="Icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                             viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve">
@@ -118,7 +118,7 @@
                             </svg>
                         <div>客户自助服务平台</div>
                     <!-- </div> -->
-                    </NuxtLink>
+                    </a>
                     <div class="flex items-center cursor-pointer" @mouseenter="showSearchView()">
                         <svg class="h-4 " id="Icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><title>utility-1_search_16p</title><path d="M10.03,0A5.966,5.966,0,0,0,5.2,9.466L.849,13.814,2.47,15.435l4.4-4.4A5.969,5.969,0,1,0,10.03,0Zm0,9.648A3.678,3.678,0,1,1,13.708,5.97,3.682,3.682,0,0,1,10.03,9.648Z" fill="#333"/></svg>
                     </div>
@@ -175,6 +175,9 @@ export default {
 
     },
     methods: {
+        jump(item){
+            this.$router.push({ path: item});
+        },
         showSearchView(){
             this.showSearch = true
             this.activeSubMenu = null
