@@ -24,8 +24,8 @@ logs
 !.env.example
 yarn.lock
 example.js
-utils/route.js
-utils/menu.js
+# utils/route.js
+# utils/menu.js
 build.sh
 pnpm-lock.yaml
 
