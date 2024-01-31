@@ -1,9 +1,9 @@
 {
     "routes": [
         {
-            "route": "/*",
-            "serve": "/index.html",
-            "statusCode": 200
+            "route": "/insurance-products/health/undefined",
+            "redirect": "/insurance-products/health/_payload.json",
+            "statusCode": 301
         }
     ],
     "navigationFallback": {
