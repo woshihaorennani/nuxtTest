@@ -1,0 +1,11 @@
+body{
+    background: $globalGrey;
+}
+/* 悬停时的样式 */
+.nuxt-link:hover {
+    color: #ff6600; /* 设置悬停时的文字颜色 */
+    /* 添加其他悬停样式 */
+}
+a:hover{
+    text-decoration: underline;
+}

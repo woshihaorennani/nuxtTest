@@ -22,3 +22,16 @@ logs
 .env
 .env.*
 !.env.example
+yarn.lock
+example.js
+utils/route.js
+utils/menu.js
+build.sh
+pnpm-lock.yaml
+
+# 忽略全部文件
+pages/*
+# 只保留特定文件
+!pages/company
+!pages/preview
+!pages/index.vue

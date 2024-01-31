@@ -1,0 +1,2 @@
+let myVariable = "company"
+console.log(myVariable)

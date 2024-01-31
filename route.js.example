@@ -1,0 +1,11 @@
+
+export function ReturnIgnoreData() {
+    return [];
+}
+export function ReturnRenderData() {
+    let pageArr = ['/company/adadad/asasasas/121212/insurance-products']
+    for (let index = 0; index < 10; index++) {
+        pageArr.push(`/company/adadad/asasasas/${index}`)
+    }
+    return pageArr;
+}

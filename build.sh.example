@@ -1,0 +1,67 @@
+#!/bin/bash
+
+# ./build.sh "D:/www/metlife/frontend"
+
+
+# 定义要使用的 Node.js 版本
+node_version="20.8.1"
+
+# 检查 nvm 是否已安装（此段代码适用于mac、linux 请按需配置）
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+  # 加载 nvm
+  . "$NVM_DIR/nvm.sh"
+  
+  # 切换到指定版本
+  nvm use "$node_version"
+  
+  # 输出当前 Node.js 版本
+  echo "Switched to Node.js $node_version"
+  
+  # 在这里添加你需要执行的其他命令，例如运行 Node.js 脚本等
+else
+  echo "nvm is not installed. Please install nvm first."
+fi
+
+
+
+# 公共变量
+public_path="D:/www/metlife/frontend"
+if [ $# -eq 0 ]
+then
+    echo "没有传递任何参数"
+else
+    public_path=$1
+fi
+
+# 处理需要编译的数据
+# 引入js配置文件
+exampleJs="$public_path/example.js";
+example_arr=$(node $exampleJs)
+# 使用read命令和正则表达式将字符串分割成数组
+IFS=',' read -ra arr <<< "$example_arr"
+
+# 删除源文件并重新复制
+for file in "${arr[@]}"; do
+    # 未找到文件夹，创建一个新的
+    echo "String '$file' not found in the array."
+    # 定义源文件夹和目标文件夹的路径
+    src_folder="$public_path/pages/company"
+    dst_folder="$public_path/pages/$file"
+    # 删除文件
+    rm -rf "$dst_folder"
+    # 复制文件夹
+    cp -r "$src_folder" "$dst_folder"
+done
+
+
+
+
+# 延时执行1秒
+sleep 1
+# 进入指定文件夹
+cd "$public_path"
+# 执行静态化编译脚本
+yarn generate
+
+
+

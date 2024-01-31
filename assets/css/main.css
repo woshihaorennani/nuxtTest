@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 公用CSS */
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.FlexCenter{
+    display: flex;
+    justify-content: center;
+}
+.width50{
+    width: 50%;
+}
