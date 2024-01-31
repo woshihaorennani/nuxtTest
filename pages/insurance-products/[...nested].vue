@@ -10,7 +10,6 @@ if(typeof keyWord != "undefined" && keyWord){
     // 动态获取接口数据
     result = await GetArticleDataPublic(keyWord)
     content = result.content
-    console.log(11111,result,222)
     // SEO优化相关设置
     if(result.seo){
         useSeoMeta({
