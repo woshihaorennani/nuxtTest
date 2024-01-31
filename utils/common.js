@@ -18,7 +18,8 @@ export async function GetArticleDataPublic(id = '', keyWord = '') {
     // 服务端异步接口请求
     let result = await useAsyncData(
         'getlist',
-        () => $fetch(`${runtimeConfig.public.baseHOST}/api/article/getArticleList`,{
+        // () => $fetch(`${runtimeConfig.public.baseHOST}/api/article/getArticleList`,{
+        () => $fetch(`https://446i661g24.vicp.fun/api/article/getArticleList`,{
         method: "post",
             body: query
         }),
