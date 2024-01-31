@@ -30,8 +30,8 @@ build.sh
 pnpm-lock.yaml
 
 # 忽略全部文件
-pages/*
+# pages/*
 # 只保留特定文件
-!pages/company
-!pages/preview
-!pages/index.vue
+# !pages/company
+# !pages/preview
+# !pages/index.vue
