@@ -6,6 +6,7 @@ const RenderData = ReturnRenderData()
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  ssr: false,
   // SEO和Meta
   app: {
     head: {
