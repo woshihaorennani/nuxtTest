@@ -1,9 +1,9 @@
 {
     "routes": [
         {
-            "route": "/insurance-products/health/undefined",
-            "redirect": "/insurance-products/health/duhuiankang",
-            "statusCode": 301
+            "route": "/*",
+            "serve": "/index.html",
+            "statusCode": 200
         }
     ],
     "navigationFallback": {
