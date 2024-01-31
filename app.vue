@@ -5,6 +5,6 @@ const { data } = await useFetch('/api/hello')
 <template>
   <div>
     <pre>{{ data }}</pre>
-    <!-- <NuxtWelcome /> -->
+    <NuxtWelcome />
   </div>
 </template>
