@@ -24,7 +24,7 @@ if(typeof keyWord != "undefined" && keyWord){
 </script>
 <template>
     <div class="page-company">
-        公司详情页面indexasasasas我是测试数据
+        公司详情页面index
         <ComponentsList :dataList="content"/>
     </div>
 </template>
